@@ -56,3 +56,13 @@ function Child({ message, update }) {
         </div>
     );
 }
+
+
+function App() {
+    return (
+        <div className="App">
+            <Parent />
+            <UserProfile />
+        </div>
+    );
+}
