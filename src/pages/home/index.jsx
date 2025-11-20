@@ -10,3 +10,9 @@ class Home extends PureComponent {
         )
     }
 }
+
+// 计数器
+function Counter(params) {
+    const [count, setCount] = useState(0)
+    return <button onClick={() => setCount(count + 1)}>{count}</button>
+}
