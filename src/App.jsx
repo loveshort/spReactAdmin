@@ -17,6 +17,24 @@ function App() {
         <div className='App-content'>
           <Counter />
         </div>
+        <div className='App-content'>
+          <UserProfile />
+        </div>
+        <div className='App-content'>
+          <Welcome name="张三" />
+        </div>
+        <div className='App-content'>
+          <Welcome name="李四" />
+        </div>
+        <div className='App-content'>
+          <Welcome name="王五" />
+        </div>
+        <div className='App-content'>
+          <Welcome name="赵六" />
+        </div>
+        <div className='App-content'>
+          <Welcome name="田七" />
+        </div>
       </div>
     </>
   )
