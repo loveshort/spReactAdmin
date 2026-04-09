@@ -1,4 +1,4 @@
-import { Button, Layout, Menu, Typography } from 'antd'
+import { Breadcrumb, Button, Card, Layout, Menu, Space, Typography, theme } from 'antd'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useMemo } from 'react'
 import { useAuthStore } from '../store/auth'
@@ -13,6 +13,7 @@ const menuItems = [
 ]
 
 export default function AdminLayout() {
+  const { token } = theme.useToken()
   const location = useLocation()
   const navigate = useNavigate()
   const logout = useAuthStore((s) => s.logout)
@@ -22,14 +23,19 @@ export default function AdminLayout() {
     return key ? [key] : []
   }, [location.pathname])
 
+  const currentTitle = useMemo(() => {
+    const key = selectedKeys[0]
+    return menuItems.find((i) => i.key === key)?.label || '后台'
+  }, [selectedKeys])
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible>
-        <div style={{ height: 48, margin: 16, display: 'flex', alignItems: 'center' }}>
+        <Space style={{ height: 48, margin: 16 }}>
           <Typography.Title level={5} style={{ color: '#fff', margin: 0 }}>
             Admin
           </Typography.Title>
-        </div>
+        </Space>
         <Menu
           theme="dark"
           mode="inline"
@@ -41,14 +47,19 @@ export default function AdminLayout() {
       <Layout>
         <Header
           style={{
-            background: '#fff',
+            background: token.colorBgContainer,
             paddingInline: 16,
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
           }}
         >
-          <Typography.Text>{location.pathname}</Typography.Text>
+          <Breadcrumb
+            items={[
+              { title: '后台' },
+              { title: currentTitle },
+            ]}
+          />
           <Button
             onClick={() => {
               logout()
@@ -59,12 +70,11 @@ export default function AdminLayout() {
           </Button>
         </Header>
         <Content style={{ margin: 16 }}>
-          <div style={{ background: '#fff', padding: 16, minHeight: 360 }}>
+          <Card bordered={false} style={{ background: token.colorBgContainer }}>
             <Outlet />
-          </div>
+          </Card>
         </Content>
       </Layout>
     </Layout>
   )
 }
-

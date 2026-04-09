@@ -5,11 +5,20 @@ import App from '../App.jsx'
 import RequireAuth from '../components/RequireAuth.jsx'
 import AdminLayout from '../layout/AdminLayout.jsx'
 
+// 页面组件统一用 lazy 懒加载；Suspense 的 fallback 由 App 统一提供
+
+// 登录页：不需要登录即可访问
 const Login = lazy(() => import('../pages/login'))
+
+// 后台路由：需要登录才能访问
 const Dashboard = lazy(() => import('../pages/admin/Dashboard.jsx'))
+// 用户管理：需要登录才能访问
 const Users = lazy(() => import('../pages/admin/Users.jsx'))
+// 角色管理：需要登录才能访问
 const Roles = lazy(() => import('../pages/admin/Roles.jsx'))
+// 菜单管理：需要登录才能访问
 const Menus = lazy(() => import('../pages/admin/Menus.jsx'))
+// 404 页面：未匹配到任何路径时进入
 const NotFound = lazy(() => import('../pages/404'))
 
 const router = createBrowserRouter([
