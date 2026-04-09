@@ -1,12 +1,8 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-
-class Login extends PureComponent {
-    render() {
-        return (
-            <div>
-                <h1>Login</h1>
-            </div>
-        )
-    }
+// 登录页：用于展示登录入口（示例页面）
+export default function Login() {
+  return (
+    <div>
+      <h1>Login</h1>
+    </div>
+  )
 }

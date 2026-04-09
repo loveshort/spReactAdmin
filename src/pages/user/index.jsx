@@ -1,12 +1,8 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-
-class User extends PureComponent {
-    render() {
-        return (
-            <div>
-                <h1>User</h1>
-            </div>
-        )
-    }
+// 用户页：用于展示用户相关内容（示例页面）
+export default function User() {
+  return (
+    <div>
+      <h1>User</h1>
+    </div>
+  )
 }

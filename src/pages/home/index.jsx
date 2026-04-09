@@ -1,19 +1,15 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import { useState } from 'react'
 
-class Home extends PureComponent {
-    render() {
-        return (
-            <div>
-                <h1>Home</h1>
-            </div>
-        )
-    }
+// 首页：示例页面，包含一个简单计数器
+export default function Home() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <h1>Home</h1>
+      <button type="button" onClick={() => setCount((c) => c + 1)}>
+        count: {count}
+      </button>
+    </div>
+  )
 }
-
-// 计数器
-function Counter(params) {
-    const [count, setCount] = useState(0)
-    return <button onClick={() => setCount(count + 1)}>{count}</button>
-}
-
